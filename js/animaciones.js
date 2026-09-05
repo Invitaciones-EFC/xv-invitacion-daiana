@@ -100,12 +100,13 @@ var CONFIG = {
 
   pintar(false);
 
-  /* El flotante solo aparece cuando el botón de la portada ya no se ve,
-     para que nunca haya dos controles en pantalla al mismo tiempo. */
+  /* El flotante entra justo al terminar la portada. Se dispara cuando queda
+     menos del 12% de ella a la vista: si esperáramos a que saliera del todo,
+     aparecería tarde y se sentiría desfasado del scroll. */
   if (flotante && portada && 'IntersectionObserver' in window) {
     new IntersectionObserver(function (entradas) {
       flotante.classList.toggle('visible', !entradas[0].isIntersecting);
-    }, { threshold: 0 }).observe(portada);
+    }, { threshold: 0.12 }).observe(portada);
   } else if (flotante) {
     flotante.classList.add('visible');
   }
