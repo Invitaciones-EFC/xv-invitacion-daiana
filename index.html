@@ -5,7 +5,7 @@
 <title>Daiana · XV Años</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="Mis XV Años · Daiana Angelite · Alista tus botas y sombrero">
-<meta name="theme-color" content="#cf1515">
+<meta name="theme-color" content="#a81319">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,9 +27,9 @@
 
     <button class="btn-musica" id="btn-musica" type="button"
             aria-pressed="false" aria-label="Reproducir la música">
-      <span class="anillo" aria-hidden="true"></span>
       <span class="icono-play" aria-hidden="true"></span>
       <span class="icono-pausa" aria-hidden="true"></span>
+      <span class="btn-musica-texto" id="btn-musica-texto">Dale play</span>
     </button>
 
     <div class="hero-flecha" aria-hidden="true">
@@ -41,6 +41,17 @@
 
   <audio id="audio-invitacion" src="musica/con-voces.mp3" loop preload="none"></audio>
 </header>
+
+<!-- ------------------------------- reproductor flotante, sigue al invitado -->
+<button class="flotante" id="flotante" type="button"
+        aria-label="Reproducir la música" aria-pressed="false">
+  <span class="flotante-circulo" aria-hidden="true">
+    <span class="icono-play"></span>
+    <span class="icono-pausa"></span>
+  </span>
+  <span class="ecualizador" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+  <span class="flotante-texto">Música</span>
+</button>
 
 <!-- ============================================================ 2 · MENSAJE -->
 <section class="section section--crema" id="mensaje">

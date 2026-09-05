@@ -66,26 +66,32 @@ var CONFIG = {
 
 /* ------------------------------------------------------------------ música */
 (function () {
-  var audio = document.getElementById('audio-invitacion');
-  var boton = document.getElementById('btn-musica');
+  var audio    = document.getElementById('audio-invitacion');
+  var boton    = document.getElementById('btn-musica');
+  var texto    = document.getElementById('btn-musica-texto');
+  var flotante = document.getElementById('flotante');
+  var portada  = document.querySelector('.hero');
 
   if (!audio || !boton) return;
 
   audio.volume = 0.6;
 
+  var controles = [boton, flotante].filter(Boolean);
+
   function pintar(sonando) {
-    boton.classList.toggle('sonando', sonando);
-    boton.setAttribute('aria-pressed', sonando ? 'true' : 'false');
-    boton.setAttribute('aria-label', sonando ? 'Pausar la música' : 'Reproducir la música');
+    controles.forEach(function (c) {
+      c.classList.toggle('sonando', sonando);
+      c.setAttribute('aria-pressed', sonando ? 'true' : 'false');
+      c.setAttribute('aria-label', sonando ? 'Pausar la música' : 'Reproducir la música');
+    });
+    if (texto) texto.textContent = sonando ? 'Pausar' : 'Dale play';
   }
 
-  boton.addEventListener('click', function () {
-    if (audio.paused) {
-      audio.play();
-    } else {
-      audio.pause();
-    }
-  });
+  function alternar() {
+    if (audio.paused) { audio.play(); } else { audio.pause(); }
+  }
+
+  controles.forEach(function (c) { c.addEventListener('click', alternar); });
 
   // La clase sigue al audio, no al clic: así queda bien aunque
   // la reproducción falle o el sistema la interrumpa (una llamada, por ejemplo)
@@ -93,6 +99,16 @@ var CONFIG = {
   audio.addEventListener('pause', function () { pintar(false); });
 
   pintar(false);
+
+  /* El flotante solo aparece cuando el botón de la portada ya no se ve,
+     para que nunca haya dos controles en pantalla al mismo tiempo. */
+  if (flotante && portada && 'IntersectionObserver' in window) {
+    new IntersectionObserver(function (entradas) {
+      flotante.classList.toggle('visible', !entradas[0].isIntersecting);
+    }, { threshold: 0 }).observe(portada);
+  } else if (flotante) {
+    flotante.classList.add('visible');
+  }
 })();
 
 /* --------------------------------------------- aparición suave al bajar */
