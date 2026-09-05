@@ -1,7 +1,7 @@
 /* ==========================================================================
    Invitación XV Años · Daiana Angelite
-   Vaquero formal — rojo vino, crema y dorado. Sin fotografías:
-   el peso visual lo llevan la tipografía y los ornamentos.
+   Vaquero formal — rojo #CF1515, crema y dorado.
+   Diseño tipográfico: sin ilustraciones, solo texto, reglas y espaciado.
    ========================================================================== */
 
 :root{
@@ -88,26 +88,16 @@ p{ margin:0; line-height:1.75; }
   text-align:center;
 }
 
-/* ---------------------------------------------------------------- adornos */
-.ornamento{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:0.7rem;
-  margin:1.5rem auto;
-  color:var(--dorado);
-}
-.ornamento::before,
-.ornamento::after{
-  content:"";
+/* ------------------------------------------------------------- separadores */
+.regla{
+  width:clamp(90px,26vw,150px);
   height:1px;
-  width:clamp(38px,14vw,70px);
-  background:currentColor;
-  opacity:0.55;
+  background:var(--dorado);
+  opacity:0.6;
+  margin:1.6rem auto;
 }
-.ornamento svg{ width:15px; height:15px; fill:currentColor; }
-
-.section--vino .ornamento{ color:var(--dorado-claro); }
+.section--vino .regla,
+.cierre .regla{ background:var(--dorado-claro); opacity:0.5; }
 
 /* ------------------------------------------------- animación al hacer scroll */
 .reveal{
@@ -162,13 +152,14 @@ p{ margin:0; line-height:1.75; }
   width:100%;
 }
 
-.hero-sombrero{
-  width:clamp(76px,22vw,104px);
-  margin:0 auto clamp(1.2rem,4vh,1.8rem);
-  color:var(--dorado-claro);
+.hero-regla{
+  width:clamp(60px,18vw,92px);
+  height:1px;
+  background:var(--dorado-claro);
+  opacity:0.65;
+  margin:0 auto clamp(1.4rem,4.5vh,2rem);
   animation:aparecer 1.4s ease both;
 }
-.hero-sombrero svg{ width:100%; height:auto; }
 
 .hero-intro{
   font-family:'Cormorant Garamond', serif;
@@ -247,7 +238,7 @@ p{ margin:0; line-height:1.75; }
   50%{ transform:translateY(8px); opacity:1; }
 }
 @media (prefers-reduced-motion: reduce){
-  .hero-sombrero,.hero-intro,.hero-fecha,.hero-lugar,.hero-flecha{ animation:none; }
+  .hero-regla,.hero-intro,.hero-fecha,.hero-lugar,.hero-flecha{ animation:none; }
   .hero-nombre{
     animation:none;
     background:none;
@@ -349,21 +340,15 @@ p{ margin:0; line-height:1.75; }
 }
 .is-visible .marco-foto img{ transform:scale(1); }
 
-.tarjeta-icono{
-  width:40px;
-  height:40px;
-  margin:0 auto 1rem;
-  color:var(--rojo);
-}
-.tarjeta-icono svg{ width:100%; height:100%; }
-
 .tarjeta .tipo{
   font-size:0.68rem;
   letter-spacing:0.26em;
   text-transform:uppercase;
   color:var(--dorado);
-  margin-bottom:0.7rem;
+  margin-bottom:0.9rem;
 }
+/* la tarjeta con foto ya trae aire arriba; la otra lo necesita */
+.tarjeta:not(.tarjeta--foto) .tipo{ margin-top:0.4rem; }
 .tarjeta .hora{
   font-family:'Rye', Georgia, serif;
   font-size:clamp(1.7rem,7vw,2.1rem);
@@ -460,21 +445,11 @@ p{ margin:0; line-height:1.75; }
 }
 
 /* ------------------------------------------------------------ 6 · etiqueta */
-.etiqueta-iconos{
-  display:flex;
-  justify-content:center;
-  align-items:flex-end;
-  gap:1.6rem;
-  margin:0 auto 1.6rem;
-  color:var(--rojo);
-}
-.etiqueta-iconos svg{ height:46px; width:auto; }
-
 .vestimenta{
   font-family:'Rye', Georgia, serif;
-  font-size:clamp(1.4rem,5.6vw,1.8rem);
+  font-size:clamp(1.5rem,6.2vw,2rem);
   color:var(--vino);
-  margin-top:0.4rem;
+  margin-top:1.1rem;
 }
 
 .aviso-color{

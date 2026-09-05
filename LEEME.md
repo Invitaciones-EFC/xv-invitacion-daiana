@@ -5,14 +5,14 @@ Sin fotografías: el diseño se sostiene con tipografía y ornamentos dibujados.
 
 ---
 
-## ⚠️ DOS COSAS PENDIENTES
+## Los datos que se cambian con más frecuencia
 
-Las dos están juntas, al principio de `js/animaciones.js`:
+Los dos están juntos, al principio de `js/animaciones.js`:
 
 ### 1. La fecha de los XV años
 
 ```js
-fecha: new Date(2027, 2, 14, 17, 0),
+fecha: new Date(2026, 10, 28, 17, 0),
 //              año  mes día hora minuto
 ```
 
@@ -27,7 +27,7 @@ fecha: new Date(2027, 2, 14, 17, 0),
 | mayo | 4 | | noviembre | 10 |
 | junio | 5 | | diciembre | 11 |
 
-Ejemplo: **9 de octubre de 2026 a las 5:00 PM** → `new Date(2026, 9, 9, 17, 0)`
+Ahora mismo está en **28 de noviembre de 2026 a las 5:00 PM**, la hora de la misa.
 
 Con eso se actualizan solas **tres cosas**: la fecha de la portada, la del pie
 de página y la cuenta regresiva.
@@ -35,7 +35,7 @@ de página y la cuenta regresiva.
 ### 2. El número para confirmar asistencia
 
 ```js
-whatsapp: '5213312345678'
+whatsapp: '523333386885'
 ```
 
 Va **52** adelante y luego los 10 dígitos, sin espacios, guiones ni paréntesis.
@@ -60,7 +60,7 @@ Invitacion Daiana/
 
 ## Qué lleva la invitación
 
-1. **Portada** — sombrero vaquero dibujado, marco dorado, nombre y fecha
+1. **Portada** — marco dorado, nombre y fecha
 2. **Mensaje** — el texto de agradecimiento
 3. **Mi familia** — papás y padrinos
 4. **Itinerario** — misa 5:00 PM y recepción 7:00 PM, con botones a Google Maps

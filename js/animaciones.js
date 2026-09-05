@@ -14,10 +14,9 @@ var CONFIG = {
   //   enero=0  febrero=1  marzo=2   abril=3   mayo=4     junio=5
   //   julio=6  agosto=7   septiembre=8  octubre=9  noviembre=10  diciembre=11
   //
-  // Ejemplo: el 14 de marzo de 2027 a las 5:00 PM  →  (2027, 2, 14, 17, 0)
-  //
-  // ⚠️ PENDIENTE: cambiar por la fecha real
-  fecha: new Date(2027, 2, 14, 17, 0),
+  // 28 de noviembre de 2026, 5:00 PM (hora de la misa)
+  // noviembre = 10
+  fecha: new Date(2026, 10, 28, 17, 0),
 
   // ── NÚMERO PARA CONFIRMAR ASISTENCIA ────────────────────────────────────
   // +52 33 3338 6885  →  52 + los 10 dígitos, sin espacios ni guiones
