@@ -100,15 +100,30 @@ var CONFIG = {
 
   pintar(false);
 
-  /* El flotante entra justo al terminar la portada. Se dispara cuando queda
-     menos del 12% de ella a la vista: si esperáramos a que saliera del todo,
-     aparecería tarde y se sentiría desfasado del scroll. */
-  if (flotante && portada && 'IntersectionObserver' in window) {
-    new IntersectionObserver(function (entradas) {
-      flotante.classList.toggle('visible', !entradas[0].isIntersecting);
-    }, { threshold: 0.12 }).observe(portada);
-  } else if (flotante) {
-    flotante.classList.add('visible');
+  /* El flotante entra en cuanto la portada empieza a quedar atrás: apenas se
+     pasa el 45% de su alto, que es cuando ya se ve el borde inferior y asoma
+     el mensaje. Se usa la posición del scroll y no IntersectionObserver
+     porque el punto exacto de aparición es lo que importa aquí. */
+  if (flotante && portada) {
+    var visible = false;
+    var esperando = false;
+
+    function revisarFlotante() {
+      esperando = false;
+      var pasada = window.scrollY > portada.offsetHeight * 0.45;
+      if (pasada === visible) return;
+      visible = pasada;
+      flotante.classList.toggle('visible', pasada);
+    }
+
+    window.addEventListener('scroll', function () {
+      if (esperando) return;
+      esperando = true;
+      requestAnimationFrame(revisarFlotante);
+    }, { passive: true });
+
+    window.addEventListener('resize', revisarFlotante, { passive: true });
+    revisarFlotante();
   }
 })();
 
