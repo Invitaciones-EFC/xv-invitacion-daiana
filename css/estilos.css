@@ -5,10 +5,10 @@
    ========================================================================== */
 
 :root{
-  --vino:#b8121f;
-  --vino-hondo:#8e0a16;
-  --rojo:#d4202e;
-  --rojo-claro:#f2666e;
+  --vino:#cf1515;          /* el rojo de la invitación */
+  --vino-hondo:#9d0f0f;    /* versión oscura, solo para el degradado */
+  --rojo:#cf1515;          /* mismo rojo en botones e íconos */
+  --rojo-oscuro:#a51111;   /* para cuando se presiona un botón */
   --crema:#f8f1e3;
   --crema-alt:#fdf9f0;
   --arena:#e6d2b4;
@@ -135,7 +135,7 @@ p{ margin:0; line-height:1.75; }
   justify-content:center;
   padding:clamp(2.5rem,8vh,4rem) clamp(1.2rem,6vw,2rem);
   background:
-    radial-gradient(circle at 50% 32%, rgba(255,110,110,0.34) 0%, rgba(184,18,31,0) 62%),
+    radial-gradient(circle at 50% 32%, rgba(255,120,120,0.32) 0%, rgba(207,21,21,0) 62%),
     linear-gradient(170deg, var(--vino) 0%, var(--vino-hondo) 100%);
   color:var(--crema);
   overflow:hidden;
@@ -336,7 +336,7 @@ p{ margin:0; line-height:1.75; }
   content:"";
   position:absolute;
   inset:0;
-  background:linear-gradient(180deg, rgba(184,18,31,0.12) 0%, rgba(184,18,31,0) 55%);
+  background:linear-gradient(180deg, rgba(207,21,21,0.12) 0%, rgba(207,21,21,0) 55%);
   pointer-events:none;
 }
 .marco-foto img{
@@ -401,7 +401,7 @@ p{ margin:0; line-height:1.75; }
 .btn svg{ width:14px; height:14px; flex:none; }
 
 .btn-mapa{ background:var(--rojo); color:var(--crema-alt); }
-.btn-mapa:hover{ background:var(--vino); transform:translateY(-1px); }
+.btn-mapa:hover{ background:var(--rojo-oscuro); transform:translateY(-1px); }
 
 /* ----------------------------------------------------- 5 · cuenta regresiva */
 .contador{
@@ -522,8 +522,8 @@ p{ margin:0; line-height:1.75; }
   margin-bottom:1.6rem;
   line-height:1.7;
 }
-.btn-whats{ background:var(--vino); color:var(--crema-alt); }
-.btn-whats:hover{ background:var(--rojo); transform:translateY(-1px); }
+.btn-whats{ background:var(--rojo); color:var(--crema-alt); }
+.btn-whats:hover{ background:var(--rojo-oscuro); transform:translateY(-1px); }
 .btn-whats svg{ width:16px; height:16px; }
 
 .rsvp-nota{
