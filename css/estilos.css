@@ -5,15 +5,15 @@
    ========================================================================== */
 
 :root{
-  --vino:#6e1220;
-  --vino-hondo:#520c17;
-  --rojo:#a41e2b;
-  --rojo-claro:#c8474f;
+  --vino:#b8121f;
+  --vino-hondo:#8e0a16;
+  --rojo:#d4202e;
+  --rojo-claro:#f2666e;
   --crema:#f8f1e3;
   --crema-alt:#fdf9f0;
-  --arena:#e0cba8;
-  --dorado:#bf9540;
-  --dorado-claro:#dcbb72;
+  --arena:#e6d2b4;
+  --dorado:#a87f2c;        /* sobre crema — más oscuro para que se lea */
+  --dorado-claro:#f0cd84;  /* sobre rojo — más claro para que resalte */
   --tinta:#3a2118;
   --tinta-suave:#6b4a3c;
   --sombra:0 22px 50px -28px rgba(58,33,24,0.55);
@@ -135,7 +135,7 @@ p{ margin:0; line-height:1.75; }
   justify-content:center;
   padding:clamp(2.5rem,8vh,4rem) clamp(1.2rem,6vw,2rem);
   background:
-    radial-gradient(circle at 50% 32%, rgba(196,72,80,0.30) 0%, rgba(110,18,32,0) 62%),
+    radial-gradient(circle at 50% 32%, rgba(255,110,110,0.34) 0%, rgba(184,18,31,0) 62%),
     linear-gradient(170deg, var(--vino) 0%, var(--vino-hondo) 100%);
   color:var(--crema);
   overflow:hidden;
@@ -145,14 +145,14 @@ p{ margin:0; line-height:1.75; }
 .hero-marco{
   position:absolute;
   inset:clamp(0.8rem,3.5vw,1.6rem);
-  border:1px solid rgba(191,149,64,0.55);
+  border:1px solid rgba(240,205,132,0.70);
   pointer-events:none;
 }
 .hero-marco::after{
   content:"";
   position:absolute;
   inset:6px;
-  border:1px solid rgba(191,149,64,0.28);
+  border:1px solid rgba(240,205,132,0.38);
 }
 
 .hero-contenido{
@@ -336,7 +336,7 @@ p{ margin:0; line-height:1.75; }
   content:"";
   position:absolute;
   inset:0;
-  background:linear-gradient(180deg, rgba(110,18,32,0.10) 0%, rgba(110,18,32,0) 55%);
+  background:linear-gradient(180deg, rgba(184,18,31,0.12) 0%, rgba(184,18,31,0) 55%);
   pointer-events:none;
 }
 .marco-foto img{
