@@ -1,0 +1,554 @@
+/* ==========================================================================
+   Invitación XV Años · Daiana Angelite
+   Vaquero formal — rojo vino, crema y dorado. Sin fotografías:
+   el peso visual lo llevan la tipografía y los ornamentos.
+   ========================================================================== */
+
+:root{
+  --vino:#6e1220;
+  --vino-hondo:#520c17;
+  --rojo:#a41e2b;
+  --rojo-claro:#c8474f;
+  --crema:#f8f1e3;
+  --crema-alt:#fdf9f0;
+  --arena:#e0cba8;
+  --dorado:#bf9540;
+  --dorado-claro:#dcbb72;
+  --tinta:#3a2118;
+  --tinta-suave:#6b4a3c;
+  --sombra:0 22px 50px -28px rgba(58,33,24,0.55);
+  --sombra-honda:0 26px 55px -22px rgba(0,0,0,0.6);
+}
+
+*{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+
+body{
+  margin:0;
+  background:var(--crema);
+  color:var(--tinta);
+  font-family:'Jost','Trebuchet MS',sans-serif;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+  width:100%;
+}
+
+svg{ display:block; }
+
+a:focus-visible,
+.btn:focus-visible{
+  outline:2px solid var(--dorado);
+  outline-offset:3px;
+}
+
+/* ------------------------------------------------------------- tipografía */
+.display{
+  font-family:'Rye', Georgia, serif;
+  font-weight:400;
+  letter-spacing:0.01em;
+}
+
+h1,h2{
+  margin:0;
+  font-family:'Cormorant Garamond', Georgia, serif;
+  font-weight:600;
+  text-wrap:balance;
+}
+
+.eyebrow{
+  font-family:'Jost',sans-serif;
+  font-weight:600;
+  font-size:0.7rem;
+  letter-spacing:0.32em;
+  text-transform:uppercase;
+  color:var(--dorado);
+}
+
+.section-title{
+  font-size:clamp(1.8rem,6vw,2.5rem);
+  margin-top:0.5rem;
+  color:var(--vino);
+}
+
+p{ margin:0; line-height:1.75; }
+
+/* ------------------------------------------------------------- estructura */
+.section{
+  position:relative;
+  width:100%;
+  padding:clamp(3.5rem,11vw,6rem) clamp(1.3rem,6vw,3rem);
+}
+.section--crema{ background:var(--crema); }
+.section--papel{ background:var(--crema-alt); }
+.section--vino{ background:var(--vino); color:var(--crema); }
+
+.inner{
+  max-width:600px;
+  margin:0 auto;
+  text-align:center;
+}
+
+/* ---------------------------------------------------------------- adornos */
+.ornamento{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:0.7rem;
+  margin:1.5rem auto;
+  color:var(--dorado);
+}
+.ornamento::before,
+.ornamento::after{
+  content:"";
+  height:1px;
+  width:clamp(38px,14vw,70px);
+  background:currentColor;
+  opacity:0.55;
+}
+.ornamento svg{ width:15px; height:15px; fill:currentColor; }
+
+.section--vino .ornamento{ color:var(--dorado-claro); }
+
+/* ------------------------------------------------- animación al hacer scroll */
+.reveal{
+  opacity:0;
+  transform:translateY(24px);
+  transition:opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.is-visible{
+  opacity:1;
+  transform:translateY(0);
+}
+@media (prefers-reduced-motion: reduce){
+  .reveal{ opacity:1; transform:none; transition:none; }
+  html{ scroll-behavior:auto; }
+}
+
+/* ------------------------------------------------------------- 1 · portada */
+.hero{
+  position:relative;
+  width:100%;
+  min-height:100vh;
+  min-height:100svh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:clamp(2.5rem,8vh,4rem) clamp(1.2rem,6vw,2rem);
+  background:
+    radial-gradient(circle at 50% 32%, rgba(196,72,80,0.30) 0%, rgba(110,18,32,0) 62%),
+    linear-gradient(170deg, var(--vino) 0%, var(--vino-hondo) 100%);
+  color:var(--crema);
+  overflow:hidden;
+}
+
+/* marco dorado doble */
+.hero-marco{
+  position:absolute;
+  inset:clamp(0.8rem,3.5vw,1.6rem);
+  border:1px solid rgba(191,149,64,0.55);
+  pointer-events:none;
+}
+.hero-marco::after{
+  content:"";
+  position:absolute;
+  inset:6px;
+  border:1px solid rgba(191,149,64,0.28);
+}
+
+.hero-contenido{
+  position:relative;
+  z-index:2;
+  text-align:center;
+  width:100%;
+}
+
+.hero-sombrero{
+  width:clamp(76px,22vw,104px);
+  margin:0 auto clamp(1.2rem,4vh,1.8rem);
+  color:var(--dorado-claro);
+  animation:aparecer 1.4s ease both;
+}
+.hero-sombrero svg{ width:100%; height:auto; }
+
+.hero-intro{
+  font-family:'Cormorant Garamond', serif;
+  font-style:italic;
+  font-size:clamp(1.35rem,5.5vw,1.8rem);
+  color:var(--arena);
+  margin-bottom:0.4rem;
+  animation:aparecer 1.4s 0.15s ease both;
+}
+
+.hero-nombre{
+  font-family:'Rye', Georgia, serif;
+  font-size:clamp(2.1rem,10.5vw,3.6rem);
+  line-height:1.12;
+  color:var(--crema);
+  text-shadow:0 3px 18px rgba(0,0,0,0.35);
+  animation:aparecer 1.4s 0.3s ease both;
+}
+
+/* brillo dorado que recorre el nombre cada tanto */
+@supports ((-webkit-background-clip:text) or (background-clip:text)){
+  .hero-nombre{
+    background:linear-gradient(100deg,
+      var(--crema) 38%,
+      var(--dorado-claro) 47%,
+      #f4e3b8 50%,
+      var(--dorado-claro) 53%,
+      var(--crema) 62%);
+    background-size:300% 100%;
+    background-position:100% 0;
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    text-shadow:none;
+    animation:aparecer 1.4s 0.3s ease both, destello 7s 1.8s ease-in-out infinite;
+  }
+}
+@keyframes destello{
+  0%,   72% { background-position:100% 0; }
+  92%, 100% { background-position:0 0; }
+}
+
+.hero-fecha{
+  margin-top:clamp(1.1rem,4vh,1.6rem);
+  font-size:clamp(0.75rem,3.2vw,0.9rem);
+  letter-spacing:0.3em;
+  text-transform:uppercase;
+  color:var(--dorado-claro);
+  animation:aparecer 1.4s 0.45s ease both;
+}
+
+.hero-lugar{
+  margin-top:0.5rem;
+  font-size:0.74rem;
+  letter-spacing:0.22em;
+  text-transform:uppercase;
+  color:var(--arena);
+  opacity:0.75;
+  animation:aparecer 1.4s 0.55s ease both;
+}
+
+@keyframes aparecer{
+  from{ opacity:0; transform:translateY(16px); }
+  to{ opacity:1; transform:translateY(0); }
+}
+
+.hero-flecha{
+  margin-top:clamp(1.8rem,5vh,2.6rem);
+  display:flex;
+  justify-content:center;
+  color:var(--dorado-claro);
+  animation:flotar 2.6s ease-in-out infinite;
+}
+@keyframes flotar{
+  0%,100%{ transform:translateY(0); opacity:0.5; }
+  50%{ transform:translateY(8px); opacity:1; }
+}
+@media (prefers-reduced-motion: reduce){
+  .hero-sombrero,.hero-intro,.hero-fecha,.hero-lugar,.hero-flecha{ animation:none; }
+  .hero-nombre{
+    animation:none;
+    background:none;
+    color:var(--crema);
+    -webkit-text-fill-color:var(--crema);
+  }
+  .marco-foto img{ transform:none; transition:none; }
+  .contador-num.late{ animation:none; }
+  .tarjeta{ transition:none; }
+}
+
+/* ------------------------------------------------------------- 2 · mensaje */
+.mensaje{
+  font-family:'Cormorant Garamond', Georgia, serif;
+  font-size:clamp(1.12rem,4.4vw,1.3rem);
+  line-height:1.85;
+  color:var(--tinta-suave);
+}
+.mensaje p + p{ margin-top:1.1rem; }
+
+.mensaje-final{
+  font-style:italic;
+  color:var(--vino);
+  font-size:clamp(1.2rem,4.8vw,1.4rem);
+}
+
+/* --------------------------------------------------- 3 · padres y padrinos */
+.familia{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:2.4rem;
+  margin-top:2.2rem;
+}
+@media(min-width:560px){
+  .familia{ grid-template-columns:1fr 1fr; gap:2rem; }
+}
+.familia .rol{
+  font-size:0.68rem;
+  letter-spacing:0.26em;
+  text-transform:uppercase;
+  color:var(--dorado);
+  margin-bottom:0.8rem;
+}
+.familia .nombres{
+  font-family:'Cormorant Garamond', serif;
+  font-weight:600;
+  font-size:clamp(1.2rem,4.6vw,1.35rem);
+  color:var(--vino);
+  line-height:1.6;
+}
+
+/* ---------------------------------------------------------- 4 · itinerario */
+.tarjetas{
+  display:flex;
+  flex-direction:column;
+  gap:1.5rem;
+  margin-top:2.4rem;
+}
+.tarjeta{
+  background:var(--crema-alt);
+  border:1px solid var(--arena);
+  border-radius:3px;
+  box-shadow:var(--sombra);
+  padding:2rem 1.5rem;
+  text-align:center;
+  position:relative;
+  transition:transform 0.4s ease, box-shadow 0.4s ease;
+}
+@media(hover:hover){
+  .tarjeta:hover{
+    transform:translateY(-4px);
+    box-shadow:0 30px 60px -28px rgba(58,33,24,0.7);
+  }
+}
+/* foto de la parroquia — proporción fija para que nunca se deforme */
+.tarjeta--foto{ padding-top:0; overflow:hidden; }
+
+.marco-foto{
+  margin:0 -1.5rem 1.6rem;
+  aspect-ratio:4/3;
+  overflow:hidden;
+  border-bottom:1px solid var(--arena);
+  position:relative;
+}
+.marco-foto::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg, rgba(110,18,32,0.10) 0%, rgba(110,18,32,0) 55%);
+  pointer-events:none;
+}
+.marco-foto img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:50% 20%;
+  transform:scale(1.09);
+  transition:transform 6s ease-out;
+}
+.is-visible .marco-foto img{ transform:scale(1); }
+
+.tarjeta-icono{
+  width:40px;
+  height:40px;
+  margin:0 auto 1rem;
+  color:var(--rojo);
+}
+.tarjeta-icono svg{ width:100%; height:100%; }
+
+.tarjeta .tipo{
+  font-size:0.68rem;
+  letter-spacing:0.26em;
+  text-transform:uppercase;
+  color:var(--dorado);
+  margin-bottom:0.7rem;
+}
+.tarjeta .hora{
+  font-family:'Rye', Georgia, serif;
+  font-size:clamp(1.7rem,7vw,2.1rem);
+  color:var(--vino);
+  margin-bottom:0.5rem;
+}
+.tarjeta .lugar{
+  font-family:'Cormorant Garamond', serif;
+  font-weight:600;
+  font-size:clamp(1.2rem,4.8vw,1.35rem);
+  color:var(--tinta);
+  margin-bottom:0.3rem;
+}
+.tarjeta .direccion{
+  font-size:0.92rem;
+  color:var(--tinta-suave);
+  line-height:1.6;
+  margin-bottom:1.4rem;
+}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  gap:0.55rem;
+  font-family:'Jost',sans-serif;
+  font-weight:600;
+  font-size:0.76rem;
+  letter-spacing:0.16em;
+  text-transform:uppercase;
+  text-decoration:none;
+  padding:0.8rem 1.35rem;
+  border-radius:2px;
+  transition:background 0.25s ease, transform 0.25s ease;
+}
+.btn svg{ width:14px; height:14px; flex:none; }
+
+.btn-mapa{ background:var(--rojo); color:var(--crema-alt); }
+.btn-mapa:hover{ background:var(--vino); transform:translateY(-1px); }
+
+/* ----------------------------------------------------- 5 · cuenta regresiva */
+.contador{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:0.55rem;
+  max-width:420px;
+  margin:2.4rem auto 0;
+}
+.contador-caja{
+  background:rgba(248,241,227,0.07);
+  border:1px solid rgba(224,203,168,0.28);
+  border-radius:3px;
+  padding:1rem 0.2rem 0.85rem;
+}
+.contador-caja{
+  transition:border-color 0.5s ease, background 0.5s ease;
+}
+.contador-num{
+  font-family:'Rye', Georgia, serif;
+  font-variant-numeric:tabular-nums;
+  font-size:clamp(1.35rem,5.8vw,1.9rem);
+  color:var(--crema);
+  line-height:1.1;
+}
+/* latido cuando el número cambia */
+.contador-num.late{ animation:latido 0.5s ease; }
+@keyframes latido{
+  0%   { transform:translateY(0)     scale(1);    color:var(--crema); }
+  35%  { transform:translateY(-3px)  scale(1.09); color:var(--dorado-claro); }
+  100% { transform:translateY(0)     scale(1);    color:var(--crema); }
+}
+.contador-etiqueta{
+  font-size:0.58rem;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:var(--arena);
+  opacity:0.8;
+  margin-top:0.45rem;
+}
+.contador-llego{
+  display:none;
+  font-family:'Cormorant Garamond', serif;
+  font-style:italic;
+  font-size:clamp(1.4rem,5.5vw,1.9rem);
+  color:var(--dorado-claro);
+  margin-top:2.2rem;
+  line-height:1.5;
+}
+.section--vino .section-title{ color:var(--crema); }
+.section--vino .sub{
+  color:var(--arena);
+  opacity:0.85;
+  margin-top:0.6rem;
+  font-size:0.95rem;
+}
+
+/* ------------------------------------------------------------ 6 · etiqueta */
+.etiqueta-iconos{
+  display:flex;
+  justify-content:center;
+  align-items:flex-end;
+  gap:1.6rem;
+  margin:0 auto 1.6rem;
+  color:var(--rojo);
+}
+.etiqueta-iconos svg{ height:46px; width:auto; }
+
+.vestimenta{
+  font-family:'Rye', Georgia, serif;
+  font-size:clamp(1.4rem,5.6vw,1.8rem);
+  color:var(--vino);
+  margin-top:0.4rem;
+}
+
+.aviso-color{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:0.85rem;
+  margin:2rem auto 0;
+  padding:1.1rem 1.3rem;
+  max-width:420px;
+  background:var(--crema-alt);
+  border:1px solid var(--arena);
+  border-radius:3px;
+}
+.muestra-roja{
+  width:26px;
+  height:26px;
+  border-radius:50%;
+  background:var(--rojo);
+  border:2px solid var(--crema-alt);
+  box-shadow:0 0 0 1px var(--rojo);
+  flex:none;
+}
+.aviso-color p{
+  font-size:0.92rem;
+  color:var(--tinta-suave);
+  text-align:left;
+  line-height:1.55;
+}
+.aviso-color strong{ color:var(--vino); font-weight:600; }
+
+/* ----------------------------------------------------------- 7 · confirmar */
+.rsvp-caja{
+  background:var(--crema-alt);
+  border:1px solid var(--arena);
+  border-radius:4px;
+  padding:2.2rem 1.5rem;
+  margin-top:2rem;
+  box-shadow:var(--sombra);
+}
+.rsvp-texto{
+  font-family:'Cormorant Garamond', serif;
+  font-size:clamp(1.1rem,4.4vw,1.25rem);
+  color:var(--tinta-suave);
+  margin-bottom:1.6rem;
+  line-height:1.7;
+}
+.btn-whats{ background:var(--vino); color:var(--crema-alt); }
+.btn-whats:hover{ background:var(--rojo); transform:translateY(-1px); }
+.btn-whats svg{ width:16px; height:16px; }
+
+.rsvp-nota{
+  margin-top:1.1rem;
+  font-size:0.78rem;
+  color:var(--tinta-suave);
+  opacity:0.75;
+}
+
+/* -------------------------------------------------------------- 8 · cierre */
+.cierre{
+  background:var(--vino);
+  color:var(--crema);
+  text-align:center;
+  padding:clamp(3rem,9vw,4rem) 1.3rem clamp(3.2rem,10vw,4.2rem);
+}
+.cierre-nombre{
+  font-family:'Rye', Georgia, serif;
+  font-size:clamp(1.5rem,6.5vw,2rem);
+  color:var(--crema);
+}
+.cierre-fecha{
+  margin-top:0.7rem;
+  font-size:0.7rem;
+  letter-spacing:0.26em;
+  text-transform:uppercase;
+  color:var(--dorado-claro);
+}
