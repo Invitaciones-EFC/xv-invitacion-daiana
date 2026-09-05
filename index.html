@@ -24,7 +24,13 @@
     <h1 class="hero-nombre">Daiana<br>Angelite</h1>
 
     <p class="hero-fecha" data-fecha="corta">Por confirmar</p>
-    <p class="hero-lugar">Tonalá, Jalisco</p>
+
+    <button class="btn-musica" id="btn-musica" type="button"
+            aria-pressed="false" aria-label="Reproducir la música">
+      <span class="anillo" aria-hidden="true"></span>
+      <span class="icono-play" aria-hidden="true"></span>
+      <span class="icono-pausa" aria-hidden="true"></span>
+    </button>
 
     <div class="hero-flecha" aria-hidden="true">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -32,26 +38,11 @@
       </svg>
     </div>
   </div>
-</header>
-
-<!-- ============================================================= 2 · MÚSICA -->
-<section class="section seccion-musica" id="musica">
-  <div class="inner reveal">
-    <p class="eyebrow">Música</p>
-
-    <button class="btn-musica" id="btn-musica" type="button" aria-pressed="false">
-      <span class="anillo" aria-hidden="true"></span>
-      <span class="icono-play" aria-hidden="true"></span>
-      <span class="icono-pausa" aria-hidden="true"></span>
-    </button>
-
-    <p class="musica-estado" id="musica-estado">Toca para escuchar</p>
-  </div>
 
   <audio id="audio-invitacion" src="musica/con-voces.mp3" loop preload="none"></audio>
-</section>
+</header>
 
-<!-- ============================================================ 3 · MENSAJE -->
+<!-- ============================================================ 2 · MENSAJE -->
 <section class="section section--crema" id="mensaje">
   <div class="inner reveal">
     <div class="regla" aria-hidden="true"></div>

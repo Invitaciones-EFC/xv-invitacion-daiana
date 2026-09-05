@@ -66,9 +66,8 @@ var CONFIG = {
 
 /* ------------------------------------------------------------------ música */
 (function () {
-  var audio  = document.getElementById('audio-invitacion');
-  var boton  = document.getElementById('btn-musica');
-  var estado = document.getElementById('musica-estado');
+  var audio = document.getElementById('audio-invitacion');
+  var boton = document.getElementById('btn-musica');
 
   if (!audio || !boton) return;
 
@@ -78,19 +77,11 @@ var CONFIG = {
     boton.classList.toggle('sonando', sonando);
     boton.setAttribute('aria-pressed', sonando ? 'true' : 'false');
     boton.setAttribute('aria-label', sonando ? 'Pausar la música' : 'Reproducir la música');
-    estado.textContent = sonando ? 'Sonando' : 'Toca para escuchar';
-    estado.classList.toggle('activo', sonando);
   }
 
   boton.addEventListener('click', function () {
     if (audio.paused) {
-      // El navegador puede negarse si no viene de un toque del usuario
-      var intento = audio.play();
-      if (intento && intento.catch) {
-        intento.catch(function () {
-          estado.textContent = 'No se pudo reproducir';
-        });
-      }
+      audio.play();
     } else {
       audio.pause();
     }
