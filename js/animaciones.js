@@ -64,6 +64,46 @@ var CONFIG = {
                 '?text=' + encodeURIComponent(texto);
 })();
 
+/* ------------------------------------------------------------------ música */
+(function () {
+  var audio  = document.getElementById('audio-invitacion');
+  var boton  = document.getElementById('btn-musica');
+  var estado = document.getElementById('musica-estado');
+
+  if (!audio || !boton) return;
+
+  audio.volume = 0.6;
+
+  function pintar(sonando) {
+    boton.classList.toggle('sonando', sonando);
+    boton.setAttribute('aria-pressed', sonando ? 'true' : 'false');
+    boton.setAttribute('aria-label', sonando ? 'Pausar la música' : 'Reproducir la música');
+    estado.textContent = sonando ? 'Sonando' : 'Toca para escuchar';
+    estado.classList.toggle('activo', sonando);
+  }
+
+  boton.addEventListener('click', function () {
+    if (audio.paused) {
+      // El navegador puede negarse si no viene de un toque del usuario
+      var intento = audio.play();
+      if (intento && intento.catch) {
+        intento.catch(function () {
+          estado.textContent = 'No se pudo reproducir';
+        });
+      }
+    } else {
+      audio.pause();
+    }
+  });
+
+  // La clase sigue al audio, no al clic: así queda bien aunque
+  // la reproducción falle o el sistema la interrumpa (una llamada, por ejemplo)
+  audio.addEventListener('play',  function () { pintar(true); });
+  audio.addEventListener('pause', function () { pintar(false); });
+
+  pintar(false);
+})();
+
 /* --------------------------------------------- aparición suave al bajar */
 (function () {
   var elementos = document.querySelectorAll('.reveal');
