@@ -168,6 +168,12 @@
   <div class="inner reveal">
     <p class="eyebrow">Código de vestimenta</p>
 
+    <figure class="marco-vestimenta">
+      <img src="imagenes/codigo-vestimenta.jpg"
+           alt="Pareja vestida de vaquero formal: ella de vestido largo con botas y sombrero, él de saco, jeans y botas"
+           loading="lazy">
+    </figure>
+
     <p class="vestimenta">Formal vaquero</p>
 
     <div class="aviso-color">
@@ -185,19 +191,34 @@
 
     <div class="rsvp-caja">
       <p class="rsvp-texto">
-        Tu presencia es el mejor regalo. Confírmame que vienes
-        para apartarte tu lugar.
+        Nos encantaría asegurar tu compañía, por lo que te pedimos confirmar
+        tu asistencia. ¡Gracias por acompañarme!
       </p>
 
-      <a class="btn btn-whats" id="btn-confirmar" href="#" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <path d="M17.5 14.4c-.3-.1-1.7-.8-2-1-.3-.1-.5-.1-.7.1-.2.3-.7 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5C10.1 9 9.6 7.8 9.4 7.3c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.3.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.6-.3z"/>
-          <path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3.1.8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2z"/>
-        </svg>
-        Confirmar por WhatsApp
-      </a>
+      <form class="rsvp-form" id="rsvp-form" novalidate>
+        <label class="campo-etiqueta" for="rsvp-nombre">Nombre completo</label>
+        <input class="campo" type="text" id="rsvp-nombre" name="nombre"
+               placeholder="Tu nombre completo" autocomplete="name">
 
-      <p class="rsvp-nota">Al confirmar, dime cuántas personas te acompañan.</p>
+        <label class="campo-etiqueta" for="rsvp-asistencia">¿Asistirás?</label>
+        <select class="campo" id="rsvp-asistencia" name="asistencia">
+          <option value="">Selecciona una opción</option>
+          <option value="si">Sí, ahí estaré</option>
+          <option value="no">No podré asistir</option>
+        </select>
+
+        <p class="rsvp-error" id="rsvp-error" role="alert" hidden></p>
+
+        <button class="btn btn-whats" type="submit">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M17.5 14.4c-.3-.1-1.7-.8-2-1-.3-.1-.5-.1-.7.1-.2.3-.7 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5C10.1 9 9.6 7.8 9.4 7.3c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.3.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.6-.3z"/>
+            <path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3.1.8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2z"/>
+          </svg>
+          Confirmar
+        </button>
+      </form>
+
+      <p class="rsvp-nota">Se abrirá WhatsApp con tu confirmación lista para enviar.</p>
     </div>
   </div>
 </section>

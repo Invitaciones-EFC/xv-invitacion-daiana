@@ -65,8 +65,10 @@ Invitacion Daiana/
 3. **Mi familia** — papás y padrinos
 4. **Itinerario** — misa 5:00 PM y recepción 7:00 PM, con botones a Google Maps
 5. **Cuenta regresiva** — llega a cero a la hora de la misa
-6. **Código de vestimenta** — formal vaquero, con el aviso del color rojo
-7. **Confirmar asistencia** — botón de WhatsApp
+6. **Código de vestimenta** — foto de referencia, formal vaquero y el aviso
+   del color rojo
+7. **Confirmar asistencia** — formulario con nombre y si asistirá; al enviarlo
+   se abre WhatsApp con el mensaje ya escrito, incluyendo el nombre
 8. **Cierre**
 
 ---

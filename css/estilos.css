@@ -580,6 +580,24 @@ p{ margin:0; line-height:1.75; }
 }
 
 /* ------------------------------------------------------------ 6 · etiqueta */
+.marco-vestimenta{
+  margin:1.8rem auto 0;
+  max-width:460px;
+  aspect-ratio:3/2;
+  overflow:hidden;
+  border:1px solid var(--arena);
+  border-radius:3px;
+  box-shadow:var(--sombra);
+}
+.marco-vestimenta img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transform:scale(1.06);
+  transition:transform 6s ease-out;
+}
+.is-visible .marco-vestimenta img{ transform:scale(1); }
+
 .vestimenta{
   font-family:'Rye', Georgia, serif;
   font-size:clamp(1.5rem,6.2vw,2rem);
@@ -627,10 +645,79 @@ p{ margin:0; line-height:1.75; }
 }
 .rsvp-texto{
   font-family:'Cormorant Garamond', serif;
+  font-style:italic;
   font-size:clamp(1.1rem,4.4vw,1.25rem);
   color:var(--tinta-suave);
-  margin-bottom:1.6rem;
+  margin-bottom:1.8rem;
   line-height:1.7;
+}
+
+/* ------------------------------------------- formulario de confirmación --- */
+.rsvp-form{
+  display:flex;
+  flex-direction:column;
+  text-align:left;
+}
+
+.campo-etiqueta{
+  font-family:'Jost',sans-serif;
+  font-weight:600;
+  font-size:0.66rem;
+  letter-spacing:0.22em;
+  text-transform:uppercase;
+  color:var(--dorado);
+  margin-bottom:0.5rem;
+}
+.campo-etiqueta + .campo{ margin-bottom:1.3rem; }
+
+.campo{
+  width:100%;
+  font-family:'Jost',sans-serif;
+  font-size:1rem;
+  color:var(--tinta);
+  background:#fff;
+  border:1px solid var(--arena);
+  border-radius:3px;
+  padding:0.85rem 0.95rem;
+  transition:border-color 0.25s ease, box-shadow 0.25s ease;
+  -webkit-appearance:none;
+  appearance:none;
+}
+.campo::placeholder{ color:#b3a291; }
+.campo:focus{
+  outline:none;
+  border-color:var(--rojo);
+  box-shadow:0 0 0 3px rgba(168,19,25,0.12);
+}
+.campo.mal{
+  border-color:var(--rojo);
+  background:#fff6f5;
+}
+
+/* flecha del desplegable, dibujada para que se vea igual en todos los móviles */
+select.campo{
+  background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236b4a3c' stroke-width='2'%3E%3Cpath d='M5 9l7 7 7-7'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;
+  background-position:right 0.9rem center;
+  background-size:16px;
+  padding-right:2.6rem;
+  cursor:pointer;
+}
+
+.rsvp-error{
+  margin:-0.5rem 0 1rem;
+  font-size:0.82rem;
+  color:var(--rojo);
+}
+
+.rsvp-form .btn-whats{
+  justify-content:center;
+  width:100%;
+  padding:1rem 1.2rem;
+  font-size:0.84rem;
+  letter-spacing:0.2em;
+  border:none;
+  cursor:pointer;
 }
 .btn-whats{ background:var(--rojo); color:var(--crema-alt); }
 .btn-whats:hover{ background:var(--rojo-oscuro); transform:translateY(-1px); }

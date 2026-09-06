@@ -54,14 +54,55 @@ var CONFIG = {
   });
 })();
 
-/* ------------------------------------------ armar el enlace de confirmación */
+/* ------------------------------------------------ confirmar por WhatsApp --- */
 (function () {
-  var enlace = document.getElementById('btn-confirmar');
-  if (!enlace) return;
+  var forma  = document.getElementById('rsvp-form');
+  if (!forma) return;
 
-  var texto = 'Hola, confirmo mi asistencia a los XV años de Daiana';
-  enlace.href = 'https://wa.me/' + CONFIG.whatsapp +
-                '?text=' + encodeURIComponent(texto);
+  var nombre = document.getElementById('rsvp-nombre');
+  var asiste = document.getElementById('rsvp-asistencia');
+  var error  = document.getElementById('rsvp-error');
+
+  function avisar(mensaje, campo) {
+    error.textContent = mensaje;
+    error.hidden = false;
+    campo.classList.add('mal');
+    campo.focus();
+  }
+
+  function limpiar() {
+    error.hidden = true;
+    nombre.classList.remove('mal');
+    asiste.classList.remove('mal');
+  }
+
+  nombre.addEventListener('input', limpiar);
+  asiste.addEventListener('change', limpiar);
+
+  forma.addEventListener('submit', function (evento) {
+    evento.preventDefault();
+    limpiar();
+
+    var quien = nombre.value.trim().replace(/\s+/g, ' ');
+
+    if (!quien) {
+      avisar('Escribe tu nombre para poder apartarte el lugar.', nombre);
+      return;
+    }
+    if (!asiste.value) {
+      avisar('Dinos si podrás acompañarnos.', asiste);
+      return;
+    }
+
+    var texto = asiste.value === 'si'
+      ? 'Hola, soy ' + quien + ' y confirmo mi asistencia a los XV años de Daiana. ¡Ahí estaré!'
+      : 'Hola, soy ' + quien + '. Agradezco mucho la invitación a los XV años de Daiana, pero no podré asistir.';
+
+    // Se abre en la misma pestaña: en iPhone los window.open que no salen de un
+    // gesto directo los bloquea Safari, y aquí ya venimos de un submit.
+    window.location.href = 'https://wa.me/' + CONFIG.whatsapp +
+                           '?text=' + encodeURIComponent(texto);
+  });
 })();
 
 /* ------------------------------------------------------------------ música */
